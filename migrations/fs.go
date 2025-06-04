@@ -1,3 +1,8 @@
+/*
+	This file (fs.go) is responsible for embedding
+	SQL migration files into the application
+*/
+
 package migrations
 
 import (

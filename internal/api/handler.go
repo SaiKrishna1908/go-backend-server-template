@@ -1,3 +1,10 @@
+/*
+	Handlers are responsible for the logic that
+	gets executed when a route is hit.
+
+	Used by app.go
+*/
+
 package api
 
 import (

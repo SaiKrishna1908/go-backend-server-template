@@ -1,3 +1,10 @@
+/*
+	This file is responsible for setting up the HTTP
+	routes for the application.
+
+	Used by main.go
+*/
+
 package routes
 
 import (

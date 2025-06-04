@@ -1,3 +1,10 @@
+/*
+	Represents the core application, containing a
+	logger, server handler, and database connection.
+
+	Used by main.go
+*/
+
 package app
 
 import (
@@ -31,9 +38,10 @@ func NewApplication() (*Application, error) {
 		panic(err)
 	}
 
+	// repository layer
 	dataStore := store.NewPostgresStore(pgDB)
 
-	// handlers
+	// controller layer
 	serverHandler := api.NewServerhandler(dataStore)
 
 	app := &Application{

@@ -1,3 +1,9 @@
+/*
+	Repository layer for your application
+
+	Used by app.go
+*/
+
 package store
 
 import "database/sql"

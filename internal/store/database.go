@@ -1,3 +1,9 @@
+/*
+	Responsible for creating a connection with database
+
+	Used by app.go
+*/
+
 package store
 
 import (
