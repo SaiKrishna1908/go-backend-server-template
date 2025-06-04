@@ -7,6 +7,7 @@ import (
 	"go-backend-server-template/internal/store"
 	"go-backend-server-template/migrations"
 	"log"
+	"net/http"
 	"os"
 )
 
@@ -30,7 +31,7 @@ func NewApplication() (*Application, error) {
 		panic(err)
 	}
 
-	dataStore := store.DataStore(pgDB)
+	dataStore := store.NewPostgresStore(pgDB)
 
 	// handlers
 	serverHandler := api.NewServerhandler(dataStore)
@@ -42,4 +43,8 @@ func NewApplication() (*Application, error) {
 	}
 
 	return app, nil
+}
+
+func (a Application) HealthCheck(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Status is available!\n")
 }

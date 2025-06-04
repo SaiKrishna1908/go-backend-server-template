@@ -9,5 +9,6 @@ import (
 func SetUpRoutes(a app.Application) *chi.Mux {
 	r := chi.NewRouter()
 
-	r.Get("/health")
+	r.Get("/health", a.HealthCheck)
+	return r
 }
