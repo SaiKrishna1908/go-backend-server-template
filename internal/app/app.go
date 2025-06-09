@@ -13,6 +13,7 @@ import (
 	"go-backend-server-template/internal/api"
 	"go-backend-server-template/internal/store"
 	"go-backend-server-template/migrations"
+	"go-backend-server-template/utils"
 	"log"
 	"net/http"
 	"os"
@@ -42,7 +43,7 @@ func NewApplication() (*Application, error) {
 	dataStore := store.NewPostgresStore(pgDB)
 
 	// controller layer
-	serverHandler := api.NewServerhandler(dataStore)
+	serverHandler := api.NewServerhandler(dataStore, logger)
 
 	app := &Application{
 		Logger:        logger,
@@ -54,5 +55,6 @@ func NewApplication() (*Application, error) {
 }
 
 func (a Application) HealthCheck(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Status is available!\n")
+	a.Logger.Printf("Status is avaiable!\n")
+	utils.WriteJson(w, http.StatusOK, utils.Envelope{"status": "OK"})
 }

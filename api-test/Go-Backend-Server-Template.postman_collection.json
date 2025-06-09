@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "4aa89992-f467-42a8-9e47-92742dfec4ec",
+		"name": "Go-Backend-Server-Template",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14384874"
+	},
+	"item": [
+		{
+			"name": "Helath Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
