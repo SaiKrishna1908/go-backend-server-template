@@ -18,6 +18,12 @@ This repository provides a template for quickly setting up a server-side applica
 - PostgreSQL installed and running
 - `goose` installed for database migrations
 
+### Setup the Database
+
+```
+docker-compose up -d
+```
+
 ### Installation
 
 1. Clone the repository:

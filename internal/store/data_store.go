@@ -8,15 +8,21 @@ package store
 
 import "database/sql"
 
-type Entity struct {
-	ID      int       `json:"id"`
-	Title   string    `json:"title"`
-	Entries []Entity2 `json:"entries"`
+type Post struct {
+	ID        int       `json:"id"`
+	Title     string    `json:"title"`
+	Content   string    `json:"content"`
+	Author    string    `json:"author"`
+	Tags      []string  `json:"tags"`
+	Published bool      `json:"published"`
+	Comments  []Comment `json:"comments"`
 }
 
-type Entity2 struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+type Comment struct {
+	ID      int    `json:"id"`
+	PostID  int    `json:"post_id"`
+	Author  string `json:"author"`
+	Content string `json:"content"`
 }
 
 type PostgresStore struct {
@@ -28,24 +34,24 @@ func NewPostgresStore(db *sql.DB) *PostgresStore {
 }
 
 type DataStore interface {
-	CreateEntity(*Entity) (*Entity, error)
-	GetEntityById(int64) (*Entity, error)
-	UpdateEntity(*Entity) error
-	DeleteEntityById(int64) error
+	CreatePost(*Post) (*Post, error)
+	GetPostById(int64) (*Post, error)
+	UpdatePost(*Post) error
+	DeletePostById(int64) error
 }
 
-func (pg *PostgresStore) CreateEntity(entity *Entity) (*Entity, error) {
+func (pg *PostgresStore) CreatePost(entity *Post) (*Post, error) {
 	return nil, nil
 }
 
-func (pg *PostgresStore) GetEntityById(id int64) (*Entity, error) {
+func (pg *PostgresStore) GetPostById(id int64) (*Post, error) {
 	return nil, nil
 }
 
-func (pg *PostgresStore) UpdateEntity(entity *Entity) error {
+func (pg *PostgresStore) UpdatePost(entity *Post) error {
 	return nil
 }
 
-func (pg *PostgresStore) DeleteEntityById(id int64) error {
+func (pg *PostgresStore) DeletePostById(id int64) error {
 	return nil
 }
